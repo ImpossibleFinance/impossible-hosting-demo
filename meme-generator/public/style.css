@@ -85,6 +85,16 @@ body {
   box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.16);
 }
 
+/* ---------- Intro line ---------- */
+.intro {
+  margin: -6px 2px 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-dim);
+  max-width: 62ch;
+}
+.intro-accent { color: var(--accent); font-weight: 600; }
+
 /* ---------- Layout ---------- */
 .layout {
   display: grid;

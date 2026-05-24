@@ -333,6 +333,25 @@ const SHELL_HEAD = `<!doctype html>
   .back:hover{color:#fff}
   .pop{animation:pop .5s cubic-bezier(.22,1.4,.5,1)}
   @keyframes pop{0%{transform:scale(.96);opacity:0}100%{transform:scale(1);opacity:1}}
+  /* how-to steps */
+  .steps{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;list-style:none;padding:0}
+  .steps li{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:999px;
+    padding:7px 13px 7px 8px;font-size:13px;color:var(--muted);
+  }
+  .steps b{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:20px;height:20px;border-radius:50%;flex:0 0 auto;
+    background:rgba(129,140,248,.16);color:var(--accent-2);
+    font-size:12px;font-weight:700;
+  }
+  .tip{
+    display:flex;align-items:flex-start;gap:10px;margin-top:16px;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:13px;
+    padding:13px 15px;color:var(--muted);font-size:13.5px;line-height:1.5;
+  }
+  .tip .ico{color:var(--accent-2);flex:0 0 auto;line-height:1.5}
 </style>
 </head><body><main>
 <div class="brand"><span class="dot"></span> Live Poll <span style="color:#3a465e">·</span> <span style="font-weight:400">on ifhost</span></div>`;
@@ -344,6 +363,11 @@ const SHELL_FOOT = `</main>
 const HOME_HTML = SHELL_HEAD + `
 <h1>Ask anything.<br>Get answers, live.</h1>
 <p class="sub">Add a question and a few options. Share the link. Watch the votes roll in.</p>
+<ol class="steps">
+  <li><b>1</b> Ask a question</li>
+  <li><b>2</b> Add a few options</li>
+  <li><b>3</b> Create &amp; share the link</li>
+</ol>
 <div class="card pop">
   <div class="field">
     <label for="q">Your question</label>
@@ -412,7 +436,7 @@ const HOME_HTML = SHELL_HEAD + `
 
 const POLL_HTML = SHELL_HEAD + `
 <h1 id="question">…</h1>
-<p class="sub" id="hint">Tap an option to cast your vote.</p>
+<p class="sub" id="hint">Tap an option to vote — results appear instantly.</p>
 <div class="card pop">
   <div class="opts" id="opts"></div>
   <div class="total">
@@ -426,6 +450,7 @@ const POLL_HTML = SHELL_HEAD + `
     <input id="shareurl" type="text" readonly>
     <button class="copy" id="copy" type="button">Copy</button>
   </div>
+  <div class="tip"><span class="ico">→</span><span>Send this link to anyone you'd like to vote — the more people who tap an option, the livelier the results.</span></div>
 </div>
 <a class="back" href="/">← Create your own poll</a>
 <div class="err" id="err"></div>

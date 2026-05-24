@@ -132,6 +132,25 @@
     box-shadow: 0 0 0 4px rgba(129,140,248,.16);
   }
 
+  /* how-to-use hint */
+  .howto {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: 8px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .howto .step { display: inline-flex; align-items: center; gap: 8px; }
+  .howto .n {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; flex: none;
+    border-radius: 7px;
+    font-size: 11px; font-weight: 700;
+    color: var(--accent);
+    background: rgba(129,140,248,.12);
+    border: 1px solid rgba(129,140,248,.28);
+  }
+
   .options {
     margin-top: 18px;
     display: grid;
@@ -330,6 +349,12 @@
         <input id="text" class="input" type="text" autocomplete="off"
                placeholder="https://host.impossi.build" value="https://host.impossi.build">
       </label>
+
+      <div class="howto" aria-label="How to use">
+        <span class="step"><span class="n">1</span> Type a link or message</span>
+        <span class="step"><span class="n">2</span> Pick a size &amp; color</span>
+        <span class="step"><span class="n">3</span> Download your PNG</span>
+      </div>
 
       <div class="options">
         <div>
