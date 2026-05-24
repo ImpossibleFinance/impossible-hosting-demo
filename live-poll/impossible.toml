@@ -3,15 +3,15 @@ region = "iad"
 
 [service]
 internal_port = 3000
+# Always-on (no scale-to-zero): one warm machine, no cold starts, and
+# in-memory/ephemeral poll data persists between visits (only a redeploy
+# resets it). A [[volumes]] mount would make votes durable across redeploys
+# too, but attaching a volume currently leaves a Dockerfile-deployed app
+# unreachable (edge routing breaks) — see docs/agents/persistence.md.
+autostop = false
+min_machines = 1
 
 [resources]
 cpu_kind = "shared"
 cpus = 1
 memory_mb = 256
-
-# NOTE: a [[volumes]] block (mount_path = "/data") would make votes durable —
-# the app already writes /data/polls.json when a volume is mounted. We left it
-# OUT because ifhost's current deploy can't attach a volume to an existing
-# machine, and recreating the machine to attach one broke the app's edge
-# routing. Until that's fixed, this demo runs with ephemeral storage (votes
-# survive idle sleeps but reset on redeploy).
