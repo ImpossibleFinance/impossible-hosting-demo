@@ -8,4 +8,10 @@ internal_port = 3000
 cpu_kind = "shared"
 cpus = 1
 memory_mb = 256
-storage = "local"
+
+# NOTE: a [[volumes]] block (mount_path = "/data") would make votes durable —
+# the app already writes /data/polls.json when a volume is mounted. We left it
+# OUT because ifhost's current deploy can't attach a volume to an existing
+# machine, and recreating the machine to attach one broke the app's edge
+# routing. Until that's fixed, this demo runs with ephemeral storage (votes
+# survive idle sleeps but reset on redeploy).
