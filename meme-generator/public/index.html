@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Meme Studio — make a meme in seconds</title>
+  <meta name="description" content="A dead-simple meme generator. Pick an image, type your caption, download. 100% in your browser — your image never leaves your device." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%98%82%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">😂</span>
+        <div class="brand-text">
+          <strong>Meme Studio</strong>
+          <span class="brand-sub">make a meme in seconds</span>
+        </div>
+      </div>
+      <div class="privacy-pill" title="No uploads. Everything runs in your browser.">
+        <span class="dot" aria-hidden="true"></span>
+        Private &middot; runs in your browser
+      </div>
+    </header>
+
+    <main class="layout">
+      <!-- Canvas stage -->
+      <section class="stage" aria-label="Meme preview">
+        <div class="canvas-wrap">
+          <canvas id="canvas" width="800" height="800"></canvas>
+          <div id="dropHint" class="drop-hint">
+            <div class="drop-hint-inner">
+              <div class="drop-emoji" aria-hidden="true">🖼️</div>
+              <p>Drop an image here</p>
+              <span>or use the picker on the right</span>
+            </div>
+          </div>
+        </div>
+        <p class="stage-tip" id="stageTip">Tip: drag a caption to reposition it.</p>
+      </section>
+
+      <!-- Controls -->
+      <aside class="panel" aria-label="Controls">
+        <!-- 1. Pick image -->
+        <div class="group">
+          <div class="group-label">1 &middot; Pick an image</div>
+          <label class="upload-btn" id="uploadBtn">
+            <input type="file" id="fileInput" accept="image/*" hidden />
+            <span class="upload-icon" aria-hidden="true">⬆</span>
+            Upload your own
+          </label>
+          <div class="starter-label">or start from a backdrop</div>
+          <div class="starters" id="starters"><!-- filled by JS --></div>
+        </div>
+
+        <!-- 2. Captions -->
+        <div class="group">
+          <div class="group-label">2 &middot; Add captions</div>
+          <div class="field">
+            <input id="topText" type="text" placeholder="TOP TEXT" maxlength="120" autocomplete="off" spellcheck="false" />
+          </div>
+          <div class="field">
+            <input id="bottomText" type="text" placeholder="BOTTOM TEXT" maxlength="120" autocomplete="off" spellcheck="false" />
+          </div>
+        </div>
+
+        <!-- 3. Style -->
+        <div class="group">
+          <div class="group-label">3 &middot; Style</div>
+          <div class="control-row">
+            <label for="fontSize">Text size</label>
+            <input id="fontSize" type="range" min="20" max="120" value="64" />
+          </div>
+          <div class="control-row">
+            <label for="textColor">Text color</label>
+            <span class="swatches" id="swatches"><!-- filled by JS --></span>
+          </div>
+          <label class="checkbox-row">
+            <input id="uppercase" type="checkbox" checked />
+            <span>UPPERCASE</span>
+          </label>
+        </div>
+
+        <!-- 4. Export -->
+        <div class="group export-group">
+          <button id="downloadBtn" class="btn btn-primary">⬇ Download PNG</button>
+          <button id="copyBtn" class="btn btn-ghost">⧉ Copy image</button>
+          <button id="resetBtn" class="btn btn-ghost btn-quiet">Reset</button>
+        </div>
+
+        <p class="made-with">
+          Built &amp; deployed on <a href="https://host.impossi.build" target="_blank" rel="noopener">ifhost</a> —
+          no servers touched your photo.
+        </p>
+      </aside>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

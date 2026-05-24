@@ -1,0 +1,11 @@
+app = "ifh-poll-demo"
+region = "iad"
+
+[service]
+internal_port = 3000
+
+[resources]
+cpu_kind = "shared"
+cpus = 1
+memory_mb = 256
+storage = "local"

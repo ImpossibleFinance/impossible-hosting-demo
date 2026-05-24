@@ -1,0 +1,13 @@
+{
+  "name": "ifh-meme-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dead-simple, 100% client-side meme generator — deployed on ifhost.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

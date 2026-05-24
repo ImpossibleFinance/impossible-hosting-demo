@@ -1,0 +1,14 @@
+{
+  "name": "ifh-poll-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dead-simple live poll / vote tool with animated results — deployed on ifhost.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}
