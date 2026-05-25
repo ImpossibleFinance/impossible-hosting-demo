@@ -27,6 +27,7 @@
   body {
     margin: 0;
     min-height: 100vh;
+    overflow-x: hidden; /* backstop: never let the page scroll sideways */
     background:
       radial-gradient(1100px 620px at 78% -8%, rgba(129,140,248,.18), transparent 60%),
       radial-gradient(900px 520px at 8% 108%, rgba(129,140,248,.10), transparent 60%),
@@ -71,6 +72,8 @@
     letter-spacing: -1.4px;
     margin: 26px 0 12px;
     font-weight: 760;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   h1 .grad {
     background: linear-gradient(100deg, #c7cdfb, var(--accent) 55%, #a5b4fc);
@@ -82,18 +85,19 @@
     color: var(--muted);
     max-width: 52ch;
     margin: 0;
+    overflow-wrap: break-word;
   }
 
   /* ---- layout ---- */
   .studio {
     margin-top: 34px;
     display: grid;
-    grid-template-columns: 1.05fr .95fr;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
     gap: 18px;
     align-items: stretch;
   }
   @media (max-width: 760px) {
-    .studio { grid-template-columns: 1fr; }
+    .studio { grid-template-columns: minmax(0, 1fr); }
   }
 
   .card {
@@ -102,6 +106,7 @@
     border-radius: var(--radius);
     padding: 24px;
     box-shadow: var(--shadow);
+    min-width: 0; /* let grid/flex children shrink so inner overflow:auto boxes contain themselves */
   }
 
   /* ---- controls ---- */
@@ -330,6 +335,12 @@
   }
   footer a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted #3a455a; }
   footer a:hover { color: var(--accent); }
+
+  /* ---- small screens ---- */
+  @media (max-width: 420px) {
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .card { padding: 18px; }
+  }
 </style>
 </head>
 <body>

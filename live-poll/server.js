@@ -244,6 +244,7 @@ const SHELL_HEAD = `<!doctype html>
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
+  body{overflow-x:hidden;}
   body{
     background:
       radial-gradient(1100px 700px at 50% -10%, rgba(129,140,248,.18), transparent 60%),
@@ -259,8 +260,8 @@ const SHELL_HEAD = `<!doctype html>
   main{width:100%;max-width:560px;margin:0 auto;padding:34px 22px 24px;flex:1}
   .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px;color:var(--muted);margin-bottom:30px}
   .dot{width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)}
-  h1{font-size:30px;line-height:1.15;margin:0 0 8px;letter-spacing:-.02em}
-  .sub{color:var(--muted);margin:0 0 26px;font-size:15px}
+  h1{font-size:30px;line-height:1.15;margin:0 0 8px;letter-spacing:-.02em;overflow-wrap:break-word;word-break:break-word}
+  .sub{color:var(--muted);margin:0 0 26px;font-size:15px;overflow-wrap:break-word}
   .card{
     background:linear-gradient(180deg, var(--panel), var(--panel-2));
     border:1px solid var(--line);border-radius:18px;padding:22px;
@@ -274,7 +275,7 @@ const SHELL_HEAD = `<!doctype html>
   input[type=text]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(129,140,248,.18)}
   input::placeholder{color:#5d6a82}
   .opt-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
-  .opt-row input{flex:1}
+  .opt-row input{flex:1;min-width:0}
   .x{flex:0 0 auto;width:42px;height:48px;border-radius:12px;border:1px solid var(--line);
      background:#0c121e;color:var(--muted);font-size:20px;cursor:pointer;line-height:1}
   .x:hover{color:#fff;border-color:#33405e}
@@ -314,7 +315,8 @@ const SHELL_HEAD = `<!doctype html>
   }
   .vote.picked .fill{background:linear-gradient(90deg, rgba(52,211,153,.28), rgba(52,211,153,.12));border-right-color:rgba(52,211,153,.6)}
   .vote .row{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:12px}
-  .vote .pct{font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px;font-weight:600}
+  .vote .txt{min-width:0;overflow-wrap:break-word;word-break:break-word}
+  .vote .pct{flex:0 0 auto;font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px;font-weight:600}
   .vote.picked .pct{color:var(--good)}
   .check{color:var(--good);font-weight:700}
   .results-mode .vote{cursor:default}
@@ -324,7 +326,7 @@ const SHELL_HEAD = `<!doctype html>
   .pulse{width:8px;height:8px;border-radius:50%;background:var(--good);animation:pulse 1.6s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
   .share{display:flex;gap:8px;margin-top:14px}
-  .share input{flex:1;font-size:14px;color:var(--accent-2)}
+  .share input{flex:1;min-width:0;font-size:14px;color:var(--accent-2)}
   .copy{flex:0 0 auto;border:1px solid var(--line);background:#0c121e;color:var(--text);
         border-radius:12px;padding:0 16px;font-size:14px;font-weight:600;cursor:pointer}
   .copy:hover{border-color:var(--accent)}
@@ -357,7 +359,7 @@ const SHELL_HEAD = `<!doctype html>
 <div class="brand"><span class="dot"></span> Live Poll <span style="color:#3a465e">·</span> <span style="font-weight:400">on ifhost</span></div>`;
 
 const SHELL_FOOT = `</main>
-<footer>Built on <a href="https://host.impossi.build">ifhost</a> — votes are saved and survive restarts. No accounts, no setup.</footer>
+<footer>Built on <a href="https://host.impossi.build">ifhost</a> — no accounts, no setup.</footer>
 </body></html>`;
 
 const HOME_HTML = SHELL_HEAD + `

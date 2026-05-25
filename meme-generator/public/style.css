@@ -23,6 +23,8 @@ html, body {
   min-height: 100%;
 }
 
+body { overflow-x: hidden; } /* backstop: never scroll the page sideways */
+
 body {
   background:
     radial-gradient(1100px 600px at 80% -10%, rgba(129, 140, 248, 0.16), transparent 60%),
@@ -92,6 +94,7 @@ body {
   line-height: 1.5;
   color: var(--text-dim);
   max-width: 62ch;
+  overflow-wrap: break-word;
 }
 .intro-accent { color: var(--accent); font-weight: 600; }
 
@@ -343,6 +346,7 @@ input[type="range"]::-moz-range-thumb {
   line-height: 1.5;
   color: var(--text-faint);
   text-align: center;
+  overflow-wrap: break-word;
 }
 .made-with a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .made-with a:hover { text-decoration: underline; }
