@@ -3,12 +3,6 @@ region = "iad"
 
 [service]
 internal_port = 3000
-# Always-on: a showcase demo must never look "dead" on the first click.
-# Scale-to-zero drops to a standby machine, and waking it on the first
-# request resets the connection (~2-3s cold start), which shows up as
-# "the connection was reset" in the browser. Keep one machine warm.
-autostop = false
-min_machines = 1
 
 [resources]
 cpu_kind = "shared"
